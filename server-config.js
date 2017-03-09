@@ -9,6 +9,7 @@ var handler = require('./lib/request-handler');
 
 var app = express();
 console.log('it is working');
+console.log('it is working nOWWW');
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(partials());

@@ -8,7 +8,7 @@ var util = require('./lib/utility');
 var handler = require('./lib/request-handler');
 
 var app = express();
-console.log('it is working');
+console.log('it is wosdfsdfsdfrking');
 console.log('it is working nO?');
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');

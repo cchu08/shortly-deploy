@@ -6,9 +6,16 @@ module.exports = function(grunt) {
       options: {
         separator: ';',
       },
-      basic: {
-        src: ['public/**/*.js'],
-        dest: 'public/dist/build.js',
+      lib: {
+        src: ['public/lib/handlebars.js', 'public/lib/jquery.js', 'public/lib/underscore.js', 
+              'public/lib/backbone.js'],
+        dest: 'public/dist/libBuild.js'
+      },
+      client: {
+        src: ['public/client/app.js', 'public/client/link.js', 'public/client/links.js',
+        'public/client/linkView.js', 'public/client/linksView.js', 
+        'public/client/createLinkView.js', 'public/client/router.js'],
+        dest: 'public/dist/clientBuild.js',
       }
     },
 
@@ -28,9 +35,13 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      basic: {
-        src: ['public/dist/*.js'],
-        dest: 'public/dist/asset.js'
+      lib: {
+        src: ['public/dist/libBuild.js'],
+        dest: 'public/dist/libAsset.js'
+      },
+      client: {
+        src: ['public/dist/clientBuild.js'],
+        dest: 'public/dist/clientAsset.js'
       }
 
     },
@@ -43,7 +54,7 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
-      basic: {
+      css: {
         src: ['public/*.css'],
         dest: 'public/dist/css.styles.min.css',
       }
@@ -68,7 +79,7 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
-        command: 'git push live3 master'
+        command: 'git push live master'
       }
     },
   });
@@ -91,7 +102,7 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
 
   grunt.registerTask('test', [
-    'eslint', 'mochaTest'
+    'mochaTest'
   ]);
 
   grunt.registerTask('build', [
